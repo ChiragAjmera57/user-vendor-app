@@ -116,9 +116,11 @@ if(localStorage.getItem('vendor-token')||localStorage.getItem('vendor-token')!==
   setInterval(() => {
     fetchSelfVendor().then((res)=>{
       if(res.users.length>usercollection){
-        console.log(res.users.length,usercollection);
         setcollection(res.users.length)
         setnote(true)
+      }
+      else{
+        setnote(false)
       }
 
     })

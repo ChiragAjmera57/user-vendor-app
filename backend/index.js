@@ -47,11 +47,12 @@ app.post('/upload', upload.single('file'), (req, res) => {
 app.get('/download/:filename', (req, res) => {
   const filename = req.params.filename;
   console.log(filename);
-  res.download(filename, (err) => { 
+  res.send(`uploads/${filename}`, (err) => { 
     if (err) {
+      console.log(err);
       res.status(404).send('File not found.');
     }
-  });
+  }); 
 });
 
 

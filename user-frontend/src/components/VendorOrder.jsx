@@ -4,10 +4,10 @@ import sendVendorData from '../utils/vendorSendsData'
 import {  downloadFileWithFetch } from '../utils/download.pdf'
 
 export const VendorOrder = ({data}) => {
+  console.log(data);
     const[date1,setdate1] = useState(Date.now)
     const[date2,setdate2] = useState(Date.now)
     const[date3,setdate3] = useState(Date.now)
-    console.log(data);
     const handleSubmit = () =>{
         sendVendorData(data.user,data.productName,data.quantity,data.dateOfShipping, date1,date2,date3).then((res)=>{
             alert(`send to user`)
@@ -60,7 +60,7 @@ export const VendorOrder = ({data}) => {
               // onChange={(e) => setShippingDate(e.target.value)}
             />
           </Grid>
-          <h4>Download Purchase order PDF <a href=""></a></h4>
+          <h4>Download Purchase order PDF <a href={`http://localhost:8080/${data.downloadLink.replace(/^\/download\//, '')}`}>Download</a></h4>
           <h4>Send you Shipping dates</h4>
           <Grid item xs={12}>
             <TextField 
